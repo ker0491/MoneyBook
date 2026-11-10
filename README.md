@@ -1,5 +1,9 @@
 # 记账本 (MoneyBook) 3.5
 
+[![Release](https://img.shields.io/github/v/release/ker0491/MoneyBook)](https://github.com/ker0491/MoneyBook/releases) [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+📥 **[下载 APK](https://github.com/ker0491/MoneyBook/releases/latest)** · 只支持 arm64-v8a 手机
+
 一个轻量的安卓记账 App：说一句话或拍张小票就能记账，App 自己把消费归到「衣 / 食 / 住 / 行 / 日常 / 人际 / 医疗 / 学习 / 其他」9 个生活大类，再细到「水果 / 买菜 / 请客吃饭」这些小类；除了日常账，也能按旅行记录时间、地点、商品和数量，最后按「某段时间 / 某地 / 某类 / 买了多少斤」出报表。
 全部数据保存在手机本地 SQLite，**不联网、无广告、无需账号**。
 
