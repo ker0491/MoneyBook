@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pageQuick"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <!-- 标题 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="6dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.08"
+                android:text="记账本"
+                android:textColor="@color/text"
+                android:textSize="19sp" />
+
+            <TextView
+                android:id="@+id/quickDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="11月2日 周六"
+                android:textColor="@color/textSub"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/quickBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip"
+            android:paddingStart="7dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="7dp"
+            android:paddingBottom="4dp"
+            android:text="3.5"
+            android:textColor="@color/textSub"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <!-- 金额 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_card"
+        android:minHeight="126dp"
+        android:orientation="vertical"
+        android:paddingStart="12dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/quickExpense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_seg_on_expense"
+                android:paddingStart="10dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="4dp"
+                android:text="支出"
+                android:textColor="@color/onAccent"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/quickIncome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_seg"
+                android:paddingStart="10dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="4dp"
+                android:text="收入"
+                android:textColor="@color/textSub"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/quickAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="-0.02"
+                android:includeFontPadding="false"
+                android:text="¥0.00"
+                android:textColor="@color/text"
+                android:textSize="38sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/quickTodayLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="今天"
+                    android:textColor="@color/textSub"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/quickTodayExpense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="支 ¥0.00"
+                    android:textColor="@color/expense"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/quickTodayIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="收 ¥0.00"
+                    android:textColor="@color/income"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/quickHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="自动归类 · 点大类/小类可改"
+            android:textColor="@color/textSub"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <!-- 三个入口 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/modeManual"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_mode_on"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="7dp"
+            android:paddingBottom="6dp">
+
+            <com.k.moneybook.PixelIconView
+                android:id="@+id/modeManualIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:pxColor="@color/onAccent"
+                app:pxIcon="keyboard" />
+
+            <TextView
+                android:id="@+id/modeManualText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="手动"
+                android:textColor="@color/onAccent"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/modeManualSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="默认"
+                android:textColor="@color/onAccent"
+                android:textSize="9sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/modeVoice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="7dp"
+            android:paddingBottom="6dp">
+
+            <com.k.moneybook.PixelIconView
+                android:id="@+id/modeVoiceIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:pxColor="@color/text"
+                app:pxIcon="mic" />
+
+            <TextView
+                android:id="@+id/modeVoiceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="语音"
+                android:textColor="@color/text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="说一句"
+                android:textColor="@color/textSub"
+                android:textSize="9sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/modeScan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_card"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="7dp"
+            android:paddingBottom="6dp">
+
+            <com.k.moneybook.PixelIconView
+                android:id="@+id/modeScanIcon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:pxColor="@color/text"
+                app:pxIcon="camera" />
+
+            <TextView
+                android:id="@+id/modeScanText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="拍照"
+                android:textColor="@color/text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小票"
+                android:textColor="@color/textSub"
+                android:textSize="9sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 归类 -->
+    <HorizontalScrollView
+        android:id="@+id/quickSceneScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/quickScenes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+    <!-- 选中大类后出现的小类 chips；只有大类必填，小类可以点「不填」 -->
+    <HorizontalScrollView
+        android:id="@+id/quickSubScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:clipToPadding="false"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:scrollbars="none"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/quickSubs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+    <!-- 地点 + 商品：地点自动用当前位置，点一下可手动改；商品用于自动归类/记忆 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/quickPlaceChip"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_chip"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="📍 地点"
+            android:textColor="@color/textSub"
+            android:textSize="11sp" />
+
+        <EditText
+            android:id="@+id/quickItem"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_input"
+            android:hint="商品（可选，如 苹果）"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:singleLine="true"
+            android:textColor="@color/text"
+            android:textColorHint="@color/textSub"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/quickMore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingStart="14dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="2dp"
+        android:text="⋯ 地点 · 数量 · 日期 · 备注"
+        android:textColor="@color/textSub"
+        android:textSize="10sp" />
+
+    <!-- 最近记的：按内容撑开，空的时候不占一大片 -->
+    <LinearLayout
+        android:id="@+id/quickRecentCard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="0.9"
+        android:background="@drawable/bg_card"
+        android:minHeight="62dp"
+        android:orientation="vertical"
+        android:paddingStart="12dp"
+        android:paddingTop="9dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="9dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="最近记的"
+            android:textColor="@color/textSub"
+            android:textSize="10sp" />
+
+        <LinearLayout
+            android:id="@+id/quickRecent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:orientation="vertical" />
+    </LinearLayout>
+
+
+    <!-- 键盘 -->
+    <GridLayout
+        android:id="@+id/quickPad"
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="4"
+        android:rowCount="4">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="7"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="8"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="9"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/keyBack"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="⌫"
+            android:textColor="@color/primary"
+            android:textSize="17sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="4"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="5"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="6"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/keyClear"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="×"
+            android:textColor="@color/primary"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/keySave"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowSpan="2"
+            android:layout_rowWeight="2"
+            android:background="@drawable/bg_save"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/onAccent"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/keyDot"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="."
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/key00"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_margin="3dp"
+            android:layout_rowWeight="1"
+            android:background="@drawable/bg_key"
+            android:gravity="center"
+            android:text="00"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+    </GridLayout>
+</LinearLayout>

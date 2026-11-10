@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <include layout="@layout/page_quick" />
+
+        <include layout="@layout/page_bills" />
+
+        <include layout="@layout/page_settings" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/ink" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@color/panel"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/tabRecord"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.k.moneybook.PixelIconView
+                android:id="@+id/tabRecordIcon"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                app:pxColor="@color/textSub"
+                app:pxIcon="ledger" />
+
+            <TextView
+                android:id="@+id/tabRecordText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="记账"
+                android:textColor="@color/textSub"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tabBills"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.k.moneybook.PixelIconView
+                android:id="@+id/tabBillsIcon"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                app:pxColor="@color/textSub"
+                app:pxIcon="list" />
+
+            <TextView
+                android:id="@+id/tabBillsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="账单"
+                android:textColor="@color/textSub"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tabSettings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.k.moneybook.PixelIconView
+                android:id="@+id/tabSettingsIcon"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                app:pxColor="@color/textSub"
+                app:pxIcon="gear" />
+
+            <TextView
+                android:id="@+id/tabSettingsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="设置"
+                android:textColor="@color/textSub"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PixelIconView">
+        <attr name="pxIcon" format="string" />
+        <attr name="pxColor" format="color" />
+    </declare-styleable>
+</resources>

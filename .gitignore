@@ -1,0 +1,30 @@
+# 构建产物
+build/
+app/build/
+.gradle/
+local.properties
+*.apk
+*.aab
+*.idsig
+
+# 签名（绝不提交）
+keystore/
+*.jks
+*.keystore
+keystore.properties
+
+# 字体不随仓库分发（版权归 SolidZORO，个人项目免费，见 licenses/Zpix-LICENSE.md）
+app/res/font/zpix.ttf
+
+# 编辑器 / 系统
+.idea/
+*.iml
+.DS_Store
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# ui_test.py 生成的截图（本地用，不进仓库）
+screenshots/

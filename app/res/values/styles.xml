@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/bg</item>
+        <item name="android:colorAccent">@color/primary</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:textColorPrimary">@color/text</item>
+        <item name="android:textColorSecondary">@color/textSub</item>
+        <item name="android:fontFamily">@font/zpix</item>
+        <item name="android:alertDialogTheme">@style/PixelDialog</item>
+        <item name="android:datePickerDialogTheme">@style/PixelDialog</item>
+        <item name="android:timePickerDialogTheme">@style/PixelDialog</item>
+    </style>
+
+    <style name="PixelDialog" parent="@android:style/Theme.Material.Light.Dialog.Alert">
+        <item name="android:fontFamily">@font/zpix</item>
+        <item name="android:colorAccent">@color/primary</item>
+        <item name="android:textColorPrimary">@color/text</item>
+        <item name="android:textColorSecondary">@color/textSub</item>
+        <item name="android:windowBackground">@drawable/bg_dialog</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">false</item>
+    </style>
+
+    <!-- 像素卡片：硬边框 + 右下实心投影（无模糊） -->
+    <style name="PxCard">
+        <item name="android:background">@drawable/bg_card</item>
+    </style>
+
+    <style name="PxKey">
+        <item name="android:background">@drawable/bg_key</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+</resources>

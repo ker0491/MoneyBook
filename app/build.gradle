@@ -1,0 +1,105 @@
+plugins {
+    id 'com.android.application'
+}
+
+def keystorePropsFile = rootProject.file('keystore.properties')
+def keystoreProps = new Properties()
+if (keystorePropsFile.exists()) {
+    keystorePropsFile.withInputStream { keystoreProps.load(it) }
+}
+
+android {
+    namespace 'com.k.moneybook'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'com.k.moneybook'
+        minSdk 26
+        targetSdk 34
+        versionCode 9
+        versionName '3.5'
+    }
+
+    // 沿用原来的目录结构，避免搬动源码
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['java']
+            res.srcDirs = ['res']
+        }
+    }
+
+    // 签名信息放在项目根目录的 keystore.properties（不进仓库），示例见 keystore.properties.example
+    signingConfigs {
+        release {
+            if (keystorePropsFile.exists()) {
+                storeFile file(keystoreProps['storeFile'])
+                storePassword keystoreProps['storePassword']
+                keyAlias keystoreProps['keyAlias']
+                keyPassword keystoreProps['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (keystorePropsFile.exists()) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    // 只在小米 15 / 红米 Turbo 4 Pro 这类 arm64 手机上用，只打一个包
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'arm64-v8a'
+            universalApk false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    // 离线中文 OCR（模型内置在 APK 里，不依赖 Google 服务、不联网）
+    implementation 'com.google.mlkit:text-recognition-chinese:16.0.1'
+    // 拍照临时文件的 FileProvider
+    implementation 'androidx.core:core:1.12.0'
+}
+
+// Zpix 像素字体不随仓库分发（见 licenses/Zpix-LICENSE.md），缺了就给出明确提示
+tasks.register('checkFont') {
+    doFirst {
+        def font = file('res/font/zpix.ttf')
+        if (!font.exists()) {
+            throw new GradleException(
+                "缺少 res/font/zpix.ttf。\n" +
+                "Zpix 字体版权归 SolidZORO，个人项目免费，但不随本仓库分发。\n" +
+                "请先在项目根目录运行：./fetch_zpix.sh")
+        }
+    }
+}
+
+afterEvaluate {
+    tasks.named('preBuild') { dependsOn 'checkFont' }
+}
+
+// Kotlin 1.8 起 jdk7/jdk8 已并入 stdlib，统一版本避免重复类
+configurations.all {
+    resolutionStrategy {
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+    }
+}
