@@ -27,4 +27,4 @@ __pycache__/
 *.pyc
 
 # ui_test.py 生成的截图（本地用，不进仓库）
-screenshots/
+/screenshots/
